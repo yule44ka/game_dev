@@ -478,12 +478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1b0760448368e4ba5bd495d036d1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpPlane: {fileID: 2496873765598560785}
-  DownPlane: {fileID: 5425349264225432496}
-  FrontPlane: {fileID: 2905376729880973002}
-  BackPlane: {fileID: 3573408770654090110}
-  LeftPlane: {fileID: 1716678186131464846}
-  RightPlane: {fileID: 920311090375690858}
+  Planes:
+  - {fileID: 2496873765598560785}
+  - {fileID: 5425349264225432496}
+  - {fileID: 1716678186131464846}
+  - {fileID: 920311090375690858}
+  - {fileID: 2905376729880973002}
+  - {fileID: 3573408770654090110}
 --- !u!33 &10210165572587029
 MeshFilter:
   m_ObjectHideFlags: 0

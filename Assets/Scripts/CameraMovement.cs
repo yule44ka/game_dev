@@ -13,7 +13,8 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButton(0))
+        {
 
             // Cube movements by mouse
             if (!rotateDisabled)
@@ -35,22 +36,35 @@ public class CameraMovement : MonoBehaviour
 
                     else if (pieces.Count == 2)
                     {
-                        cubeManager.
+                        cubeManager.DetectRotate(pieces, planes);
+                        rotateDisabled = true;
                     }
                 }
-
-
-                // Camera movements by mouse
-                if (!cameraDisabled)
-                {
-                    localRotation.x += Input.GetAxis("Mouse X") * 15;
-                    localRotation.y += Input.GetAxis("Mouse Y") * -15;
-                    localRotation.y = Mathf.Clamp(localRotation.y, -50, 50);
-                }
             }
-            Quaternion qt = Quaternion.Euler(localRotation.y, localRotation.x, 0);
-            transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, qt, Time.deltaTime * 15);
 
+
+            // Camera movements by mouse
+            if (!cameraDisabled)
+            {
+                rotateDisabled = true;
+                localRotation.x += Input.GetAxis("Mouse X") * 15;
+                localRotation.y += Input.GetAxis("Mouse Y") * -15;
+                localRotation.y = Mathf.Clamp(localRotation.y, -50, 50);
+            }
+            
         }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            pieces.Clear();
+            planes.Clear();
+            cameraDisabled = rotateDisabled = false;
+           
+        }
+
+
+        Quaternion qt = Quaternion.Euler(localRotation.y, localRotation.x, 0);
+        transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, qt, Time.deltaTime * 15);
+
+       
     } 
 }
